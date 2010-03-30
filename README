@@ -1,8 +1,6 @@
 Opencart eTranzact
 Supports the eTranzact payment gateway.
-.
 
 It works with OpenCart V1.4.x
-. Just copy the folders admin and catalog into your folder's ftp root. No file editing required. Contributed by Galleria Technologies. 
-
+Just copy the folders admin and catalog into your folder's ftp root. No file editing required.
 Any questions on the opencart-etranzact, feel free to send email to henry@addhen.org. You can see the extension in action at http://shop.agbena.com

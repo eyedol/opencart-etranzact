@@ -23,34 +23,32 @@ class ControllerPaymentEtranzact extends Controller {
 
         // reference 
         if ($this->config->get('paymate_include_order')) {
-	    $this->data['ref'] = html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8') . " (#" . $order_info['order_id'] . ")";
-	} else {
-	    $this->data['ref'] = html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8');
-	}
+	    	$this->data['ref'] = html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8') . " (#" . $order_info['order_id'] . ")";
+		} else {
+	    	$this->data['ref'] = html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8');
+		}
 
 
         $this->data['amount'] = $order_info['total']; 
         
         //now here lets check if its a demo server
         if( $this->config->get('etranzact_test')) {
-            $this->data['action'] = 'http://demo.etranzact.com/WebConnect/
-';
+            $this->data['action'] = 'http://demo.etranzact.com/WebConnect/';
         }else {
-            $this->data['action'] = 'https://www.etranzact.net
-';        
+            $this->data['action'] = 'https://www.etranzact.net/';        
         }
 
         $this->data['pmt_contact_firstname'] = html_entity_decode($order_info['payment_firstname'], ENT_QUOTES, 'UTF-8');
-	$this->data['pmt_contact_surname'] = html_entity_decode($order_info['payment_lastname'], ENT_QUOTES, 'UTF-8');
-	$this->data['pmt_contact_phone'] = $order_info['telephone'];
-	$this->data['pmt_sender_email'] = $order_info['email'];
-	$this->data['regindi_address1'] = html_entity_decode($order_info['payment_address_1'], ENT_QUOTES, 'UTF-8');
-	$this->data['regindi_address2'] = html_entity_decode($order_info['payment_address_2'], ENT_QUOTES, 'UTF-8');
-	$this->data['regindi_sub'] = html_entity_decode($order_info['payment_city'], ENT_QUOTES, 'UTF-8');
-	$this->data['regindi_state'] = html_entity_decode($order_info['payment_zone'], ENT_QUOTES, 'UTF-8');
+		$this->data['pmt_contact_surname'] = html_entity_decode($order_info['payment_lastname'], ENT_QUOTES, 'UTF-8');
+		$this->data['pmt_contact_phone'] = $order_info['telephone'];
+		$this->data['pmt_sender_email'] = $order_info['email'];
+		$this->data['regindi_address1'] = html_entity_decode($order_info['payment_address_1'], ENT_QUOTES, 'UTF-8');
+		$this->data['regindi_address2'] = html_entity_decode($order_info['payment_address_2'], ENT_QUOTES, 'UTF-8');
+		$this->data['regindi_sub'] = html_entity_decode($order_info['payment_city'], ENT_QUOTES, 'UTF-8');
+		$this->data['regindi_state'] = html_entity_decode($order_info['payment_zone'], ENT_QUOTES, 'UTF-8');
         $this->data['regindi_pcode'] = html_entity_decode($order_info['payment_postcode'], ENT_QUOTES, 'UTF-8');
         
-	$this->data['pmt_country'] = $order_info['payment_iso_code_2'];
+		$this->data['pmt_country'] = $order_info['payment_iso_code_2'];
 
        
         $this->data['back'] =  HTTP_SERVER . 'index.php?route=checkout/payment';
